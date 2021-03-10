@@ -59,4 +59,4 @@ if ! rustc --version >/dev/null; then
 fi
 
 msg "Updating vim plugins"
-git submodule update --init --recursive && || error "Failed to update vim plugins"
+git submodule update --init --recursive || error "Failed to update vim plugins"
