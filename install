@@ -62,5 +62,6 @@ msg "Updating vim plugins"
 git submodule update --init --recursive || error "Failed to update vim plugins"
 
 if [[ $OS == "debian" ]]; then
+    msg "Adding a .bashrc, because that's what Debian-based distros want."
     echo ". ~/.profile" >"$HOME"/.bashrc
 fi
