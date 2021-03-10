@@ -27,8 +27,8 @@ for f in homefiles/.*; do
     if [[ $file == "." || $file == ".." ]]; then
         continue
     fi
-    ln -f "$file" "$HOME/$file"
-    msg "Hard-linked ~/$file"
+    ln -f "homefiles/$file" "$HOME/$file" && msg "Hard-linked ~/$file" || error "Failed hard-linking ~/$file"
+
 done
 
 # Symlink directories into ~/
@@ -37,8 +37,8 @@ for dir in bin gitcompletion tmux vim; do
     if [[ -d "$dir" ]]; then
         rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
     fi
-    ln -s "${dir}" "$HOME/.$dir"
-    msg "Sym-linked ~/${dir}/"
+    ln -s "${dir}" "$HOME/.$dir" && msg "Sym-linked ~/.$dir/" || error "Failed to sym-link ~/.$dir/"
+
 done
 
 # Is rust installed?
