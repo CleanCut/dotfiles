@@ -27,7 +27,8 @@ for f in homefiles/.*; do
     if [[ $file == "." || $file == ".." ]]; then
         continue
     fi
-    ln -f "homefiles/$file" "$HOME/$file" && msg "Hard-linked ~/$file" || error "Failed hard-linking ~/$file"
+    msg "Hard-linking ~/$file"
+    ln -f "homefiles/$file" "$HOME/$file" || error "Failed hard-linking ~/$file"
 
 done
 
@@ -37,7 +38,8 @@ for dir in bin gitcompletion tmux vim; do
     if [[ -d "$dir" ]]; then
         rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
     fi
-    ln -s "${dir}" "$HOME/.$dir" && msg "Sym-linked ~/.$dir/" || error "Failed to sym-link ~/.$dir/"
+    msg "Sym-linking ~/.$dir/"
+    ln -s "${dir}" "$HOME/.$dir" || error "Failed to sym-link ~/.$dir/"
 
 done
 
@@ -55,3 +57,6 @@ if ! rustc --version >/dev/null; then
         warn "Rust is not installed. 😕"
     fi
 fi
+
+msg "Updating vim plugins"
+git submodule update --init --recursive && || error "Failed to update vim plugins"
