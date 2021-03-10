@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+function msg() {
+    echo "🚀 $1"
+}
+
+function warn() {
+    echo "🟡 $1"
+}
+
+function error() {
+    echo "🛑 $1"
+}
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    OS="macos"
+else
+    # shellcheck disable=SC1091
+    . /etc/os-release
+    OS="$ID"
+fi
+msg "Operating System: ${OS}"
+
+# Hard link all the files in homefiles/ into ~/
+for f in homefiles/.*; do
+    file=$(basename "$f")
+    if [[ $file == "." || $file == ".." ]]; then
+        continue
+    fi
+    ln -f "$file" "$HOME/$file"
+    msg "Hard-linked ~/$file"
+done
+
+# Symlink directories into ~/
+for dir in bin gitcompletion tmux vim; do
+    # Remove any exsting symlink
+    if [[ -d "$dir" ]]; then
+        rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
+    fi
+    ln -s "${dir}" "$HOME/.$dir"
+    msg "Sym-linked ~/${dir}/"
+done
+
+# Is rust installed?
+if ! rustc --version >/dev/null; then
+    # BP Dev environment, automatically install rust
+    if [[ $USER == "build" && $HOME == "/workspace" ]]; then
+        if [[ ! -f rustup-init.sh ]]; then
+            curl --proto '=https' --tlsv1.2 -o rustup-init.sh -sSf https://sh.rustup.rs
+            chmod a+x rustup-init.sh
+        fi
+        ./rustup-init.sh -y || error "Failed to install Rust 😭"
+        rm rustup-init.sh
+    else
+        warn "Rust is not installed. 😕"
+    fi
+fi

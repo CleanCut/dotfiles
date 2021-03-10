@@ -1,0 +1,42 @@
+#!/bin/bash
+
+PGDATA=/Volumes/db/pgdata
+
+start()
+{
+    pg_ctl -D ${PGDATA} -l ${PGDATA}/server.log start
+    return
+}
+
+
+stop()
+{
+    pg_ctl -D ${PGDATA} -l ${PGDATA}/server.log stop
+    return
+}
+
+init()
+{
+    initdb ${PGDATA} -E utf8
+    return
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    init)
+        init
+        ;;
+    *)
+        echo "Usage: pg (start|stop|restart|init)"
+        exit 1
+        ;;
+esac

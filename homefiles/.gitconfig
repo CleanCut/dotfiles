@@ -1,0 +1,30 @@
+[color]
+ui = true
+[core]
+excludesfile = ~/.gitignore-global
+pager = less -x1,5
+[user]
+name = Nathan Stocks
+email = cleancut@github.com
+[mergetool "Kaleidoscope"]
+cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+trustexitcode = true
+[difftool]
+prompt = false
+[mergetool]
+prompt = false
+[github]
+user = CleanCut
+[push]
+default = simple
+[credential]
+helper = osxkeychain
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+[protocol]
+version = 2
+[pull]
+ff = only

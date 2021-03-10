@@ -1,0 +1,4 @@
+-- see http://www.postgresql.org/docs/8.2/static/app-psql.html#APP-PSQL-PROMPTING
+\set PROMPT1 '%/@%[%033[1;34m%]%M%[%033[0m%]%R%# '
+\set PROMPT2 '%/@%[%033[1;34m%]%M%[%033[0m%]%R%# '
+\pset pager off
