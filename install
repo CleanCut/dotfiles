@@ -28,7 +28,7 @@ for f in homefiles/.*; do
         continue
     fi
     msg "Hard-linking ~/$file"
-    ln -f "homefiles/$file" "$HOME/$file" || error "Failed hard-linking ~/$file"
+    ln -f "$(pwd)/homefiles/$file" "$HOME/$file" || error "Failed hard-linking ~/$file"
 
 done
 
@@ -39,7 +39,7 @@ for dir in bin gitcompletion tmux vim; do
         rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
     fi
     msg "Sym-linking ~/.$dir/"
-    ln -s "${dir}" "$HOME/.$dir" || error "Failed to sym-link ~/.$dir/"
+    ln -s "$(pwd)/${dir}" "$HOME/.$dir" || error "Failed to sym-link ~/.$dir/"
 
 done
 
