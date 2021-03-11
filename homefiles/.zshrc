@@ -21,7 +21,7 @@ compdef _files mt
 fpath=(~/.zsh $fpath)
 
 # Enable Git Prompt Substitution
-source ~/.gitstuff/git-prompt.sh
+source ~/.gitcompletion/git-prompt.sh
 
 # Shell Prompt Explanation
 # ========================
