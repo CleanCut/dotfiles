@@ -12,6 +12,9 @@ function error() {
     echo "🛑 $1"
 }
 
+# We want to run from the same directory this script is located in
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
 if [[ "$(uname)" == "Darwin" ]]; then
     OS="macos"
 else
