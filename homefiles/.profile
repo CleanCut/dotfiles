@@ -184,6 +184,9 @@ alias sudovim='sudo HOME=$HOME vim'
 alias tclsh='rlwrap tclsh'
 alias v='source venv/bin/activate && hash -r'
 
+# Extra local config if it exists
+[ -f ~/.private/.profile ] && source ~/.private/.profile
+
 # Make sure .ssh/config permissions are correct
 [ -f ~/.ssh/config ] && chmod 644 ~/.ssh/config
 
