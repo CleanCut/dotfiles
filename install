@@ -13,7 +13,7 @@ function error() {
 }
 
 # We want to run from the same directory this script is located in
-cd "$( dirname "${BASH_SOURCE[0]}" )"
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 if [[ "$(uname)" == "Darwin" ]]; then
     OS="macos"
@@ -67,4 +67,11 @@ git submodule update --init --recursive || error "Failed to update vim plugins"
 if [[ $OS == "debian" ]]; then
     msg "Adding a .bashrc, because that's what Debian-based distros want."
     echo ". ~/.profile" >"$HOME"/.bashrc
+fi
+
+# Prompt about installing the private dotfiles next
+if [[ -d "$HOME/.private" ]]; then
+    msg "Success! Consider running ~/.private/install next."
+else
+    msg "Success!"
 fi
