@@ -110,6 +110,7 @@ alias dcs='docker-compose stop'
 alias dcu='docker-compose up'
 alias ddk='docker rm $(docker ps -a -q)'
 alias demo='export PS1=$PSDEMO'
+alias doc='cargo doc --no-deps --open'
 alias dstats='docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}\t{{.PIDs}}"'
 alias f='find . -name '
 
@@ -134,6 +135,14 @@ function mt () {
     fi
 }
 export mt
+
+function sizeof () {
+    IGNORE=""
+    if [[ $2 != "" ]] ; then
+        IGNORE="-I $2"
+    fi
+    du -k ${=IGNORE} $1 | tail -n 1 | cut -f 1 | awk '{s=$1*1024} END {printf "%d\n", s}'
+}
 
 # Git add commands
 alias ga='git add'
