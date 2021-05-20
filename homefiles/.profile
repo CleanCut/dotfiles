@@ -39,6 +39,16 @@ vim_badge() {
     fi
 }
 
+# Make sure .ssh/config permissions are correct
+[ -f ~/.ssh/config ] && chmod 644 ~/.ssh/config
+# Make sure .ssh symlink permissions are correct
+[ -d ~/.ssh ] && chmod -h 700 ~/.ssh
+# Make sure actual ssh dir and up through $HOME have perms that make ssh happy
+[ -d ~/.private/ssh ] && chmod 700 ~/.private/ssh && chmod 700 ~/.private && chmod 700 ~/
+# Create the sockets dir if it doesn't already exist
+[ -d ~/.ssh ] && [ ! -d ~/.ssh/sockets ] && mkdir ~/.ssh/sockets
+
+
 if [ "$(uname)" = "Darwin" ] ; then
     if ! cat /tmp/ssh_added 2> /dev/null > /dev/null ; then
         ssh-add ~/.ssh/id_rsa 2> /tmp/key-adding-result
@@ -195,9 +205,6 @@ alias v='source venv/bin/activate && hash -r'
 
 # Extra local config if it exists
 [ -f ~/.profile-private.sh ] && source ~/.profile-private.sh
-
-# Make sure .ssh/config permissions are correct
-[ -f ~/.ssh/config ] && chmod 644 ~/.ssh/config
 
 # Shell-completion for green
 which green >& /dev/null && source "$( green --completion-file )"
