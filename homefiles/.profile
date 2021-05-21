@@ -251,3 +251,4 @@ fi
 # This will just end up blank if no java is installed
 JAVA_HOME="$(if ls /usr/libexec/java_home &> /dev/null ; then /usr/libexec/java_home -v 1.8 2>/dev/null; fi)"
 export JAVA_HOME
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
