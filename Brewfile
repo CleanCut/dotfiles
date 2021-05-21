@@ -1,0 +1,11 @@
+
+brew "docker"
+brew "gh"
+brew "git-lfs"
+brew "git"
+cask "iterm2"
+brew "jq"
+brew "macvim"
+brew "tmux"
+brew "tree"
+brew "wget"
