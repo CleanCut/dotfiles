@@ -69,6 +69,15 @@ if [[ $OS == "debian" ]]; then
     echo ". ~/.profile" >"$HOME"/.bashrc
 fi
 
+if [[ $OS == "macos" ]]; then
+    if ! which brew &> /dev/null ; then
+        msg "Homebrew is not installed, let's install it now!"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    msg "Installing stuff we want from Homebrew..."
+    brew bundle
+fi
+
 # Prompt about installing the private dotfiles next
 if [[ -d "$HOME/.private" ]]; then
     msg "Success! Consider running ~/.private/install next."
