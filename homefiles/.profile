@@ -252,3 +252,14 @@ fi
 JAVA_HOME="$(if ls /usr/libexec/java_home &> /dev/null ; then /usr/libexec/java_home -v 1.8 2>/dev/null; fi)"
 export JAVA_HOME
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# Ruby environment stuff
+if which rbenv &>/dev/null; then
+    eval "$(rbenv init -)"
+fi
+
+# Node environment stuff
+if which nodenv &>/dev/null; then
+    eval "$(nodenv init -)"
+fi
+
