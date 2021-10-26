@@ -69,10 +69,13 @@ git submodule update --init --recursive || error "Failed to update vim plugins"
 if [[ $OS == "macos" ]]; then
     if ! which brew &> /dev/null ; then
         msg "Homebrew is not installed, let's install it now!"
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ; then
+            error "Failed to install homebrew."
+        fi
+        hash -r
     fi
     msg "Installing stuff we want from Homebrew..."
-    brew bundle
+    brew bundle || error "Failed to install the stuff we want from Homebrew."
 else
     if [[ $OS == "debian" || $OS == "ubuntu" ]]; then
     msg "Adding a .bashrc, because that's what $OS-based distros want."
