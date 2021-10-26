@@ -24,14 +24,14 @@ else
 fi
 msg "Operating System: ${OS}"
 
-# Hard link all the files in homefiles/ into ~/
+# Symlink all the files in homefiles/ into ~/
 for f in homefiles/.*; do
     file=$(basename "$f")
     if [[ $file == "." || $file == ".." ]]; then
         continue
     fi
-    msg "Hard-linking ~/$file"
-    ln -f "$(pwd)/homefiles/$file" "$HOME/$file" || error "Failed hard-linking ~/$file"
+    msg "Symlinking ~/$file"
+    ln -s -f "$(pwd)/homefiles/$file" "$HOME/$file" || error "Failed symlinking ~/$file"
 
 done
 
@@ -64,10 +64,7 @@ fi
 msg "Updating vim plugins"
 git submodule update --init --recursive || error "Failed to update vim plugins"
 
-if [[ $OS == "debian" ]]; then
-    msg "Adding a .bashrc, because that's what Debian-based distros want."
-    echo ". ~/.profile" >"$HOME"/.bashrc
-fi
+
 
 if [[ $OS == "macos" ]]; then
     if ! which brew &> /dev/null ; then
@@ -76,6 +73,13 @@ if [[ $OS == "macos" ]]; then
     fi
     msg "Installing stuff we want from Homebrew..."
     brew bundle
+else
+    if [[ $OS == "debian" || $OS == "ubuntu" ]]; then
+    msg "Adding a .bashrc, because that's what $OS-based distros want."
+    echo ". ~/.profile" >"$HOME"/.bashrc
+    else
+        error "I don't know what shell rc script changes to make on $OS"
+    fi
 fi
 
 # Prompt about installing the private dotfiles next
