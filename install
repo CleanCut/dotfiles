@@ -46,36 +46,45 @@ for dir in bin gitcompletion tmux vim; do
 
 done
 
+function install_rust {
+    msg "Installing Rust..."
+    if [[ ! -f rustup-init.sh ]]; then
+        curl --proto '=https' --tlsv1.2 -o rustup-init.sh -sSf https://sh.rustup.rs
+        chmod a+x rustup-init.sh
+    fi
+    ./rustup-init.sh -y || error "Failed to install Rust 😭"
+    rm rustup-init.sh
+}
+
 # Is rust installed?
 if ! rustc --version >/dev/null; then
     # BP Dev environment, automatically install rust
     if [[ $USER == "build" && $HOME == "/workspace" ]]; then
-        if [[ ! -f rustup-init.sh ]]; then
-            curl --proto '=https' --tlsv1.2 -o rustup-init.sh -sSf https://sh.rustup.rs
-            chmod a+x rustup-init.sh
-        fi
-        ./rustup-init.sh -y || error "Failed to install Rust 😭"
-        rm rustup-init.sh
+        install_rust
+    elif [[ $OS == "macos" ]] ; then
+        install_rust
     else
         warn "Rust is not installed. 😕"
     fi
 fi
 
-msg "Updating vim plugins"
-git submodule update --init --recursive || error "Failed to update vim plugins"
+msg "Resetting all vim plugins"
+git submodule --quiet deinit -f --all 2>/dev/null
+git submodule --quiet update --init --recursive || error "Failed to update vim plugins"
 
 
 
 if [[ $OS == "macos" ]]; then
-    if ! which brew &> /dev/null ; then
+    if ! [ -f "/opt/homebrew/bin/brew" ] ; then
         msg "Homebrew is not installed, let's install it now!"
         if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ; then
             error "Failed to install homebrew."
         fi
+        eval "$(/opt/homebrew/bin/brew shellenv)"
         hash -r
     fi
     msg "Installing stuff we want from Homebrew..."
-    brew bundle || error "Failed to install the stuff we want from Homebrew."
+    brew bundle --quiet || error "Failed to install the stuff we want from Homebrew."
 else
     if [[ $OS == "debian" || $OS == "ubuntu" ]]; then
     msg "Adding a .bashrc, because that's what $OS-based distros want."

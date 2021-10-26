@@ -51,7 +51,7 @@ vim_badge() {
 # Make sure .ssh/config permissions are correct
 [ -f ~/.ssh/config ] && chmod 644 ~/.ssh/config
 # Make sure .ssh symlink permissions are correct on macos (linux symlinks don't have independent perms)
-[ -d ~/.ssh ] && [ "$OS" == "macos" ] && chmod -h 700 ~/.ssh
+[ -d ~/.ssh ] && [ "$OS" = "macos" ] && chmod -h 700 ~/.ssh
 # Make sure actual ssh dir and up through $HOME have perms that make ssh happy
 [ -d ~/.private/ssh ] && chmod 700 ~/.private/ssh && chmod 700 ~/.private && chmod 700 ~/
 # Create the sockets dir if it doesn't already exist
@@ -272,3 +272,7 @@ if which nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
+# Homebrew environment stuff
+if [ -f "/opt/homebrew/bin/brew" ] ; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
