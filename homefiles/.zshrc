@@ -12,6 +12,9 @@ CORRECT_IGNORE=""
 # Initialize the ZSH Command Completion System
 zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '~/.zshrc'
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 autoload -Uz compinit
 compinit
 # Make it so that the mt function (defined in .profile) autocompletes arguments as files
