@@ -75,12 +75,12 @@ git submodule --quiet update --init --recursive || error "Failed to update vim p
 
 
 if [[ $OS == "macos" ]]; then
-    if ! [ -f "/opt/homebrew/bin/brew" ] ; then
+    if ! type brew &>/dev/null ; then
         msg "Homebrew is not installed, let's install it now!"
         if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" ; then
             error "Failed to install homebrew."
         fi
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+        eval "$(brew shellenv)"
         hash -r
     fi
     msg "Installing stuff we want from Homebrew..."
