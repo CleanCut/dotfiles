@@ -15,22 +15,22 @@
     url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/vim-windowswap"]
     path = vim/bundle/vim-windowswap
-    url = git@github.com:wesQ3/vim-windowswap.git
+    url = https://github.com/wesQ3/vim-windowswap.git
 [submodule "vim/bundle/ctrlp.vim"]
     path = vim/bundle/ctrlp.vim
-    url = git@github.com:kien/ctrlp.vim.git
+    url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/nerdcommenter"]
     path = vim/bundle/nerdcommenter
-    url = git@github.com:scrooloose/nerdcommenter.git
+    url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/nerdtree"]
     path = vim/bundle/nerdtree
     url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/dockerfile.vim"]
     path = vim/bundle/dockerfile.vim
-    url = git@github.com:honza/dockerfile.vim.git
+    url = https://github.com/honza/dockerfile.vim.git
 [submodule "vim/bundle/vim-better-whitespace"]
     path = vim/bundle/vim-better-whitespace
-    url = git@github.com:ntpeters/vim-better-whitespace.git
+    url = https://github.com/ntpeters/vim-better-whitespace.git
 [submodule "vim/bundle/delimitMate.git"]
 	path = vim/bundle/delimitMate.git
-	url = git@github.com:Raimondi/delimitMate.git
+	url = https://github.com/Raimondi/delimitMate.git

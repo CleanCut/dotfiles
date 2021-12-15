@@ -1,10 +1,19 @@
 #!/bin/bash
 # shellcheck source=/dev/null disable=2034
 
-# Debian sources .profile by default in some part of the X login using /bin/sh,
-# but it doesn't need any of my bash/zsh stuff at that point (and the syntax
-# makes X crash)
-if cat /etc/debian_version 2>/dev/null >/dev/null ; then
+# Set $OS to macos, debian, ubuntu, etc.
+if [ "$(uname)" = "Darwin" ] ; then
+    OS="macos"
+else
+    # shellcheck disable=SC1091
+    . /etc/os-release
+    OS="$ID"
+fi
+
+if [ "$OS" = "debian" ] ; then
+    # Debian sources .profile by default in some part of the X login using /bin/sh,
+    # but it doesn't need any of my bash/zsh stuff at that point (and the syntax
+    # makes X crash)
     if [ "$BASH_VERSION" = "" ] ; then
         return
     fi
@@ -41,15 +50,15 @@ vim_badge() {
 
 # Make sure .ssh/config permissions are correct
 [ -f ~/.ssh/config ] && chmod 644 ~/.ssh/config
-# Make sure .ssh symlink permissions are correct
-[ -d ~/.ssh ] && chmod -h 700 ~/.ssh
+# Make sure .ssh symlink permissions are correct on macos (linux symlinks don't have independent perms)
+[ -d ~/.ssh ] && [ "$OS" = "macos" ] && chmod -h 700 ~/.ssh
 # Make sure actual ssh dir and up through $HOME have perms that make ssh happy
 [ -d ~/.private/ssh ] && chmod 700 ~/.private/ssh && chmod 700 ~/.private && chmod 700 ~/
 # Create the sockets dir if it doesn't already exist
 [ -d ~/.ssh ] && [ ! -d ~/.ssh/sockets ] && mkdir ~/.ssh/sockets
 
 
-if [ "$(uname)" = "Darwin" ] ; then
+if [ "$OS" = "macos" ] ; then
     if ! cat /tmp/ssh_added 2> /dev/null > /dev/null ; then
         ssh-add ~/.ssh/id_rsa 2> /tmp/key-adding-result
         if [ "$(head -n 1 /tmp/key-adding-result)" = "No identity found in the keychain." ] ; then
@@ -126,7 +135,7 @@ alias f='find . -name '
 
 # See .zshrc for how we enabled filename tab-completion for this function under zsh
 function mt () {
-    if [ "$(uname)" == "Darwin" ] ; then
+    if [ "$OS" == "macos" ] ; then
         if [ "$(mvim --serverlist)" == "" ] ; then
             # MacVim is not open, just open with any arguments as files in tabs
             mvim -p "$@"
@@ -263,3 +272,7 @@ if which nodenv &>/dev/null; then
     eval "$(nodenv init -)"
 fi
 
+# Homebrew environment stuff
+if [ -f "/opt/homebrew/bin/brew" ] ; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
