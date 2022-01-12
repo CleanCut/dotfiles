@@ -79,8 +79,9 @@ LS_COLORS="no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:bd=40;33;01:cd=40;33;
 MANPATH=$MANPATH:/opt/local/share/man
 source "$HOME/.path"
 TMUX_SHELL=$(if which reattach-to-user-namespace &>/dev/null ; then echo "reattach-to-user-namespace -l $SHELL" ; else  echo "$SHELL -l" ; fi)
+RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL
+export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL RIPGREP_CONFIG_PATH
 
 # Depends on PATH being exported
 EDITOR=$(which vim)
