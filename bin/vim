@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -e /usr/local/cellar ]; then
-    MACVIM=$(find /usr/local/Cellar -name MacVim.app | tail -n 1)
+    MACVIM=$(find /usr/local/Cellar/macvim -name MacVim.app | tail -n 1)
     if [ "${MACVIM}" != "" ]; then
         exec "${MACVIM}"/Contents/MacOS/vim "$@"
     fi
