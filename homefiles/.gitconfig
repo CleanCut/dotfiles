@@ -2,7 +2,10 @@
 ui = true
 [core]
 excludesfile = ~/.gitignore-global
-pager = less -x1,5
+[pager]
+log  = diff-highlight | less
+show = diff-highlight | less
+diff = diff-highlight | less
 [user]
 name = Nathan Stocks
 email = cleancut@github.com
