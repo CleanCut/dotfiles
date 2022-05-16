@@ -70,7 +70,7 @@ if [ "$OS" = "macos" ] ; then
 fi
 
 # Hostnames to color blue in the prompt
-BLUEHOSTS=('fire' 'ice')
+BLUEHOSTS=('fire' 'ice', 'macstudio')
 CLICOLOR=""
 GOPATH="$HOME/.go"
 INFOPATH=$INFOPATH:/opt/local/share/info
