@@ -200,6 +200,8 @@ alias gbam='for k in `git branch -a --merged | sed s/^..//`;do echo -e `git log 
 alias gp="git push"
 alias gpnh="git push --tags nathan HEAD"
 alias gpoh="git push --tags origin HEAD"
+
+alias gocover="go test ./... -coverprofile cover.out && go tool cover -html=cover.out"
 alias ij='open -a "IntelliJ IDEA"'
 alias ll='ls -l'
 alias lla='ls -la'
