@@ -1,3 +1,4 @@
+brew "colordiff"
 brew "docker"
 brew "gh"
 brew "git"
