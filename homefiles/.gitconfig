@@ -20,6 +20,7 @@ prompt = false
 user = CleanCut
 [push]
 default = simple
+autoSetupRemote = true
 [credential]
 helper = osxkeychain
 [filter "lfs"]
