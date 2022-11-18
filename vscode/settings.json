@@ -1,0 +1,279 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontFamily": "Ubuntu Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "[handlebars]": {
+        "editor.suggest.insertMode": "replace",
+        "editor.rulers": [
+            120
+        ]
+    },
+    "[markdown]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 100,
+    },
+    "[rust]": {
+        "editor.rulers": [
+            100
+        ]
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "variable.constant": {
+                "foreground": "#9876aa",
+                "fontStyle": ""
+            },
+            "number": {
+                "foreground": "#9876aa",
+                "fontStyle": ""
+            },
+            "interface": {
+                "foreground": "#ff8800",
+                "fontStyle": "italic"
+            },
+            "namespace": {
+                "foreground": "#6BA9FF",
+                "fontStyle": ""
+            },
+            "attribute": {
+                "foreground": "#AE81FF",
+                "fontStyle": ""
+            },
+            "function.attribute": {
+                "foreground": "#AE81FF"
+            },
+            "parenthesis.attribute": {
+                "foreground": "#AE81FF"
+            },
+            "colon.attribute": {
+                "foreground": "#AE81FF"
+            },
+            "comma.attribute": {
+                "foreground": "#AE81FF"
+            },
+            "enum": {
+                "foreground": "#6BA9FF",
+                "fontStyle": ""
+            },
+            "enumMember": {
+                "foreground": "#6BA9FF",
+                "fontStyle": "italic"
+            },
+            "macro": {
+                "fontStyle": "italic"
+            },
+            "keyword": {
+                "fontStyle": ""
+            },
+            "method": {
+                "foreground": "#FFC66D",
+                "fontStyle": ""
+            },
+            "lifetime": {
+                "foreground": "#FF72E4",
+                "fontStyle": "italic"
+            },
+            "label": {
+                "foreground": "#FF72E4",
+                "fontStyle": "italic"
+            },
+            "struct": {
+                "foreground": "#FD971F",
+                "fontStyle": ""
+            },
+            "typeAlias": {
+                "foreground": "#66d9ef",
+                "fontStyle": ""
+            },
+            "builtinType": {
+                "foreground": "#66d9ef",
+                "fontStyle": "italic"
+            },
+            "type": {
+                "foreground": "#66d9ef",
+                "fontStyle": ""
+            },
+            "typeParameter": {
+                "foreground": "#66d9ef",
+                "fontStyle": ""
+            },
+            "parameter": {
+                "foreground": "#ffffff",
+                "fontStyle": ""
+            },
+            "parameter.mutable": {
+                "foreground": "#ffffff",
+                "fontStyle": "italic"
+            },
+            "variable": {
+                "foreground": "#ffffff",
+                "fontStyle": ""
+            },
+            "variable.mutable": {
+                "foreground": "#ffffff",
+                "fontStyle": "italic"
+            },
+            "variable.declaration.mutable": {
+                "foreground": "#ffffff",
+                "fontStyle": "italic"
+            },
+            "comment.documentation": {
+                "foreground": "#6a7fe4"
+            }
+        }
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "source.rust",
+                "settings": {
+                    "foreground": "#A9B7C6"
+                }
+            },
+            { // toml
+                "scope": "variable.key.table",
+                "settings": {
+                    "foreground": "#4EC9B0",
+                },
+            },
+            { // toml
+                "scope": "variable.key.array",
+                "settings": {
+                    "foreground": "#569CD6",
+                }
+            },
+            { // toml
+                "scope": "constant.other.time",
+                "settings": {
+                    "foreground": "#DCDCAA",
+                }
+            },
+            {
+                "scope": "punctuation",
+                "settings": {
+                    "foreground": "#A9B7C6",
+                }
+            }
+        ]
+    },
+    "editor.semanticHighlighting.enabled": true,
+    "files.autoSave": "onFocusChange",
+    "files.hotExit": "onExitAndWindowClose",
+    "git.autofetch": true,
+    "python.jediEnabled": false,
+    "terminal.integrated.fontSize": 14,
+    "go.buildOnSave": "off",
+    "go.useLanguageServer": true,
+    "editor.multiCursorModifier": "alt",
+    "go.formatTool": "goimports",
+    "workbench.colorCustomizations": {
+        "terminal.ansiBlack": "#000000",
+        "terminal.ansiBrightBlack": "#333333",
+        "terminal.ansiRed": "#ec483e",
+        "terminal.ansiBrightRed": "#ff6d67",
+        "terminal.ansiGreen": "#00c200",
+        "terminal.ansiBrightGreen": "#5ff967",
+        "terminal.ansiYellow": "#ffa400",
+        "terminal.ansiBrightYellow": "#ffdf00",
+        "terminal.ansiBlue": "#0081ff",
+        "terminal.ansiBrightBlue": "#00a6ff",
+        "terminal.ansiMagenta": "#ae5fef",
+        "terminal.ansiBrightMagenta": "#ff76ff",
+        "terminal.ansiCyan": "#00c5c7",
+        "terminal.ansiBrightCyan": "#5ffdff",
+        "terminal.ansiWhite": "#c7c7c7",
+        "terminal.ansiBrightWhite": "#feffff",
+        "terminalCursor.foreground": "#0081ff",
+        "terminalCursor.background": "#feffff",
+        "terminal.background": "#180c00",
+        "editor.findMatchBorder": "#ffff00",
+        "editor.findMatchHighlightBorder": "#aaaa00",
+        "editorCursor.foreground": "#0081ff"
+    },
+    "editor.cursorBlinking": "solid",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "workbench.colorTheme": "Monokai",
+    "workbench.preferredDarkColorTheme": "Monokai",
+    "terminal.integrated.shellArgs.osx": [],
+    "editor.rulers": [
+        100
+    ],
+    // For k8s/moda configs - https://team.githubapp.com/posts/34258                                
+    "yaml.schemas": {
+        "kubernetes": [
+            "/config/kubernetes/*.yaml"
+        ]
+    },
+    "explorer.confirmDelete": false,
+    "debug.allowBreakpointsEverywhere": true,
+    "editor.lineHeight": 17,
+    "python.formatting.provider": "black",
+    "editor.suggest.showStatusBar": true,
+    "terminal.integrated.scrollback": 10000,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "editor.accessibilitySupport": "off",
+    "gitlens.codeLens.enabled": false,
+    "files.insertFinalNewline": true,
+    "go.toolsManagement.autoUpdate": true,
+    "python.showStartPage": false,
+    "testing.enableProblemDiagnostics": true,
+    "githubIssues.assignWhenWorking": false,
+    "githubIssues.createIssueTriggers": [],
+    "githubIssues.issueCompletions.enabled": false,
+    "githubIssues.userCompletions.enabled": false,
+    "rust-analyzer.cargo.features": "all",
+    "rust-analyzer.lens.enable": false,
+    // "rust-analyzer.diagnostics.experimental.enable": false,
+    // "rust-analyzer.inlayHints.enable": true,
+    // "rust-analyzer.lens.debug": false,
+    // "rust-analyzer.lens.implementations": false,
+    // "rust-analyzer.lens.run": false,
+    // "rust-analyzer.procMacro.enable": true,
+    "ruby.rubocop.onSave": false,
+    "presentationMode.zoomLevel": 4,
+    "zenMode.centerLayout": false,
+    "terminal.integrated.tabs.enabled": true,
+    "evenBetterToml.formatter.compactArrays": false,
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "#e5aa25",
+    },
+    "editor.parameterHints.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.enable": {
+        "*": false,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": false,
+        "rust": false
+    },
+    "python.languageServer": "Pylance",
+    "editor.bracketPairColorization.enabled": false,
+    "rust-analyzer.inlayHints.maxLength": null,
+    "rust-analyzer.inlayHints.reborrowHints.enable": true,
+    "todo-tree.filtering.excludeGlobs": [
+        "**/node_modules",
+        "**/target",
+        "**/.git"
+    ],
+    "todo-tree.filtering.includeHiddenFiles": true,
+    "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+    "redhat.telemetry.enabled": false,
+    "go.editorContextMenuCommands": {
+        "fillStruct": true
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "cmake.configureOnOpen": true,
+    "explorer.confirmDragAndDrop": false,
+    "terminal.external.windowsExec": "$wsl/usr/bin/bash",
+    "terminal.integrated.smoothScrolling": true,
+    "diffEditor.renderSideBySide": false,
+    "window.zoomLevel": 1,
+    "editor.lightbulb.enabled": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+}
