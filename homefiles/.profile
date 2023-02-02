@@ -80,9 +80,8 @@ MANPATH=$MANPATH:/opt/local/share/man
 source "$HOME/.path"
 TMUX_SHELL=$(if which reattach-to-user-namespace &>/dev/null ; then echo "reattach-to-user-namespace -l $SHELL" ; else  echo "$SHELL -l" ; fi)
 RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
-export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL RIPGREP_CONFIG_PATH CARGO_REGISTRIES_CRATES_IO_PROTOCOL
+export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL RIPGREP_CONFIG_PATH
 
 # Depends on PATH being exported
 EDITOR=$(which vim)
