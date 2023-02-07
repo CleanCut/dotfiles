@@ -187,7 +187,7 @@ alias glaf='git log --graph --all --decorate --name-status'
 alias glas='git log --graph --all --decorate --pretty=oneline --abbrev-commit'
 # Git movement commands
 # (cd to the root of the git repository)
-alias gr='if [ "`git rev-parse --show-cdup`" != "" ] ; then cd `git rev-parse --show-cdup` ; fi'
+alias gr='cd $(git rev-parse --show-toplevel)'
 # Git status
 alias gst='git status'
 # Git submodule commands
