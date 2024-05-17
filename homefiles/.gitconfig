@@ -32,3 +32,5 @@ required = true
 version = 2
 [pull]
 ff = only
+[init]
+	defaultBranch = main
