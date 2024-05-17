@@ -21,11 +21,11 @@
         "enabled": true,
         "rules": {
             "variable.constant": {
-                "foreground": "#9876aa",
+                "foreground": "#AE81FF",
                 "fontStyle": ""
             },
             "number": {
-                "foreground": "#9876aa",
+                "foreground": "#AE81FF",
                 "fontStyle": ""
             },
             "interface": {
@@ -41,6 +41,9 @@
                 "fontStyle": ""
             },
             "function.attribute": {
+                "foreground": "#AE81FF"
+            },
+            "generic.attribute": {
                 "foreground": "#AE81FF"
             },
             "parenthesis.attribute": {
@@ -120,6 +123,10 @@
             },
             "comment.documentation": {
                 "foreground": "#6a7fe4"
+            },
+            "function": {
+                "foreground": "#A6E22E",
+                "fontStyle": ""
             }
         }
     },
@@ -129,6 +136,12 @@
                 "scope": "source.rust",
                 "settings": {
                     "foreground": "#A9B7C6"
+                }
+            },
+            { // Disables the underline on the C of #[repr(C)]
+                "scope": "entity.name.type",
+                "settings": {
+                    "fontStyle": ""
                 }
             },
             { // toml
@@ -201,7 +214,7 @@
     "editor.rulers": [
         100
     ],
-    // For k8s/moda configs - https://team.githubapp.com/posts/34258                                
+    // For k8s/moda configs - https://team.githubapp.com/posts/34258
     "yaml.schemas": {
         "kubernetes": [
             "/config/kubernetes/*.yaml"
@@ -249,10 +262,10 @@
         "*": false,
         "yaml": false,
         "plaintext": false,
-        "markdown": false,
-        "rust": false
+        "markdown": false
     },
     "python.languageServer": "Pylance",
+    "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.bracketPairColorization.enabled": false,
     "rust-analyzer.inlayHints.maxLength": null,
     "rust-analyzer.inlayHints.reborrowHints.enable": true,
@@ -269,11 +282,18 @@
     },
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "cmake.configureOnOpen": true,
+    "editor.formatOnSave": true,
     "explorer.confirmDragAndDrop": false,
     "terminal.external.windowsExec": "$wsl/usr/bin/bash",
     "terminal.integrated.smoothScrolling": true,
-    "diffEditor.renderSideBySide": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
     "window.zoomLevel": 1,
-    "editor.lightbulb.enabled": false,
-    "editor.inlayHints.enabled": "offUnlessPressed",
+    "lldb.suppressUpdateNotifications": true,
+    "git.openRepositoryInParentFolders": "always",
+    "editor.lightbulb.enabled": "off",
+    "github.codespaces.showPerformanceExplorer": true,
+    "github.codespaces.createCodespaceInNewWindow": true,
+    "terminal.integrated.lineHeight": 1.03,
 }
