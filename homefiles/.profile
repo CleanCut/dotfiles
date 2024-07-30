@@ -88,6 +88,17 @@ export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL
 EDITOR=$(which vim)
 export EDITOR
 
+// Settings to improve the codespaces experience
+if [[ ${CODESPACES} == "true" ]] ; then
+    # MAKE SHELL HISTORY STOP DISAPPEARING ALL THE TIME
+    # See https://github.com/github/codespaces/issues/2851
+    export HISTFILE=/workspaces/.codespaces/.persistedshare/.bash_history
+    export PROMPT_COMMAND="history -a" # Write history each command due to Codespace sometimes not flushing
+    export HISTSIZE=-1
+    export HISTFILESIZE=-1
+    export HISTCONTROL=ignoreboth
+fi
+
 
 # Bash-specific stuff, in case I decide to come back from ZSH...
 if [[ -n "$BASH_VERSION" ]] ; then
