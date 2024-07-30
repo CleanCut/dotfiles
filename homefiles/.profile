@@ -88,7 +88,7 @@ export BLUEHOSTS CLICOLOR GOPATH INFOPATH LESS LS_COLORS MANPATH PATH TMUX_SHELL
 EDITOR=$(which vim)
 export EDITOR
 
-// Settings to improve the codespaces experience
+# Settings to improve the codespaces experience
 if [[ ${CODESPACES} == "true" ]] ; then
     # MAKE SHELL HISTORY STOP DISAPPEARING ALL THE TIME
     # See https://github.com/github/codespaces/issues/2851
