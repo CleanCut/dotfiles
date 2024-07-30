@@ -21,8 +21,8 @@ user = CleanCut
 [push]
 default = simple
 autoSetupRemote = true
-[credential]
-helper = osxkeychain
+# [credential]
+# helper = osxkeychain
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
