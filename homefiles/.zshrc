@@ -167,3 +167,22 @@ setopt prompt_subst
 # ZSH-specific aliases
 alias history="history 1"
 
+# For "cheating" when livecoding a presentation
+_cheat_completion() {
+    local completions
+    pushd ~/cheat >/dev/null
+    completions="$(ls $1* 2>/dev/null)"
+    popd >/dev/null
+    reply=( "${(ps:\n:)completions}" )
+}
+
+function cheat() {
+    if [ -f ~/cheat/$1 ] ; then
+        cat ~/cheat/$1 | pbcopy
+        echo "📋 Copied to clipboard! ($1)"
+    else
+        echo "😭 No cheat found for $1"
+    fi
+}
+
+compctl -K _cheat_completion cheat
