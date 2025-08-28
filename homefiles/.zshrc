@@ -171,7 +171,11 @@ alias history="history 1"
 _cheat_completion() {
     local completions
     pushd ~/cheat >/dev/null
-    completions="$(ls $1* 2>/dev/null)"
+    if [ -n "$1" ] ; then
+        completions="$(ls $1* 2>/dev/null)"
+    else
+        completions="$(ls 2>/dev/null)"
+    fi
     popd >/dev/null
     reply=( "${(ps:\n:)completions}" )
 }
@@ -179,10 +183,11 @@ _cheat_completion() {
 function cheat() {
     if [ -f ~/cheat/$1 ] ; then
         cat ~/cheat/$1 | pbcopy
-        echo "📋 Copied to clipboard! ($1)"
+        echo "✅ Copied to clipboard! 📋 ($1)"
     else
-        echo "😭 No cheat found for $1"
+        echo "❌ No cheat found for $1"
     fi
 }
 
 compctl -K _cheat_completion cheat
+
