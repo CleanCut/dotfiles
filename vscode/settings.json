@@ -21,11 +21,11 @@
         "enabled": true,
         "rules": {
             "variable.constant": {
-                "foreground": "#AE81FF",
+                "foreground": "#9876aa",
                 "fontStyle": ""
             },
             "number": {
-                "foreground": "#AE81FF",
+                "foreground": "#9876aa",
                 "fontStyle": ""
             },
             "interface": {
@@ -41,9 +41,6 @@
                 "fontStyle": ""
             },
             "function.attribute": {
-                "foreground": "#AE81FF"
-            },
-            "generic.attribute": {
                 "foreground": "#AE81FF"
             },
             "parenthesis.attribute": {
@@ -123,10 +120,6 @@
             },
             "comment.documentation": {
                 "foreground": "#6a7fe4"
-            },
-            "function": {
-                "foreground": "#A6E22E",
-                "fontStyle": ""
             }
         }
     },
@@ -136,12 +129,6 @@
                 "scope": "source.rust",
                 "settings": {
                     "foreground": "#A9B7C6"
-                }
-            },
-            { // Disables the underline on the C of #[repr(C)]
-                "scope": "entity.name.type",
-                "settings": {
-                    "fontStyle": ""
                 }
             },
             { // toml
@@ -202,7 +189,8 @@
         "terminal.background": "#180c00",
         "editor.findMatchBorder": "#ffff00",
         "editor.findMatchHighlightBorder": "#aaaa00",
-        "editorCursor.foreground": "#0081ff"
+        "editorCursor.foreground": "#0081ff",
+        "editor.selectionBackground": "#a6b800"
     },
     "editor.cursorBlinking": "solid",
     "terminal.integrated.shell.osx": "/bin/zsh",
@@ -210,7 +198,7 @@
     "terminal.integrated.macOptionClickForcesSelection": true,
     "workbench.colorTheme": "Monokai",
     "workbench.preferredDarkColorTheme": "Monokai",
-    "terminal.integrated.shellArgs.osx": [],
+    "terminal.integrated.shellArgs.osx": [ ],
     "editor.rulers": [
         100
     ],
@@ -236,7 +224,7 @@
     "python.showStartPage": false,
     "testing.enableProblemDiagnostics": true,
     "githubIssues.assignWhenWorking": false,
-    "githubIssues.createIssueTriggers": [],
+    "githubIssues.createIssueTriggers": [ ],
     "githubIssues.issueCompletions.enabled": false,
     "githubIssues.userCompletions.enabled": false,
     "rust-analyzer.cargo.features": "all",
@@ -259,10 +247,12 @@
     "editor.inlineSuggest.enabled": true,
     "security.workspace.trust.untrustedFiles": "open",
     "github.copilot.enable": {
-        "*": false,
-        "yaml": false,
+        "*": true,
         "plaintext": false,
-        "markdown": false
+        "markdown": false,
+        "scminput": false,
+        "yaml": false,
+        "rust": false
     },
     "python.languageServer": "Pylance",
     "editor.inlayHints.enabled": "offUnlessPressed",
@@ -282,18 +272,35 @@
     },
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "cmake.configureOnOpen": true,
-    "editor.formatOnSave": true,
     "explorer.confirmDragAndDrop": false,
     "terminal.external.windowsExec": "$wsl/usr/bin/bash",
     "terminal.integrated.smoothScrolling": true,
     "[python]": {
         "editor.formatOnType": true
     },
-    "window.zoomLevel": 1,
     "lldb.suppressUpdateNotifications": true,
     "git.openRepositoryInParentFolders": "always",
     "editor.lightbulb.enabled": "off",
     "github.codespaces.showPerformanceExplorer": true,
     "github.codespaces.createCodespaceInNewWindow": true,
-    "terminal.integrated.lineHeight": 1.03,
+    "go.inlayHints.assignVariableTypes": true,
+    "go.inlayHints.compositeLiteralFields": true,
+    "go.inlayHints.compositeLiteralTypes": true,
+    "go.inlayHints.constantValues": true,
+    "go.inlayHints.functionTypeParameters": true,
+    "go.inlayHints.parameterNames": true,
+    "go.inlayHints.rangeVariableTypes": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": [
+        "--fix"
+    ],
+    "go.lintOnSave": "package",
+    "remote.autoForwardPortsSource": "hybrid",
+    "editor.hover.delay": 1000,
+    "window.zoomLevel": 4,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "editor.dragAndDrop": false,
+    "editor.formatOnSave": true,
+    "json.format.keepLines": true,
+    "json.format.enable": false,
 }
