@@ -168,6 +168,10 @@ function mt () {
 }
 export mt
 
+function nudgeall () {
+    for i in "$@" ; do echo "--- Nudging PR $i ---" && gh pr checkout $i && nudge && gpoh ; done
+}
+
 function sizeof () {
     IGNORE=""
     if [[ $2 != "" ]] ; then
@@ -199,9 +203,17 @@ alias glaf='git log --graph --all --decorate --name-status'
 alias glas='git log --graph --all --decorate --pretty=oneline --abbrev-commit'
 # Git movement commands
 # (cd to the root of the git repository)
-alias gr='cd $(git rev-parse --show-toplevel)'
+alias groot='cd $(git rev-parse --show-toplevel)'
+# Git rebase commands
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias grs='git rebase --skip'
 # Git status
 alias gst='git status'
+# Git switch commands
+alias gs='git switch'
+alias gsc='git switch --create'
 # Git submodule commands
 alias gsup="git submodule update --init --recursive"
 # Git branch commands
@@ -221,6 +233,7 @@ alias llh='ls -lh'
 alias llah='ls -lah'
 alias llrt='ls -lrt'
 alias nudge='git commit --allow-empty -m "nudge ci"'
+alias nukebranch='export curr_branch=$(git branch --show-current) ; git switch main ; git branch -D $curr_branch ; git push origin :$curr_branch'
 alias redo='clean && echo "\$ cargo run" && RUSTFLAGS="-Awarnings" cargo run'
 alias rtree='tree -I target'
 alias sleepnow='pmset displaysleepnow'
