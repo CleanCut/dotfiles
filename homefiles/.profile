@@ -169,7 +169,7 @@ function mt () {
 export mt
 
 function nudgeall () {
-    for i in "$@" ; do echo "--- Nudging PR $i ---" && gh pr checkout $i && nudge && gpoh ; done
+    for i in "$@" ; do echo "--- Nudging PR $i ---" && gh pr checkout $i && git commit --allow-empty -m "nudge ci" && git push --tags origin HEAD ; done
 }
 
 function sizeof () {
@@ -218,8 +218,8 @@ alias gsc='git switch --create'
 alias gsup="git submodule update --init --recursive"
 # Git branch commands
 # shellcheck disable=SC2154 # False positive -- see https://github.com/koalaman/shellcheck/issues/2098#issuecomment-794585510
-alias gban='for k in $(git branch -a --no-merged | sed s/^..//);do echo -e $(git log --color -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k")\\t"$k";done|sort'
-alias gbam='for k in `git branch -a --merged | sed s/^..//`;do echo -e `git log --color -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k"`\\t"$k";done|sort'
+alias gban='for k in $(git branch -a --no-merged | grep -v remotes/origin/HEAD | sed s/^..//);do echo -e $(git log --color -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k")\\t"$k";done|sort'
+alias gbam='for k in `git branch -a --merged | grep -v remotes/origin/HEAD | sed s/^..//`;do echo -e `git log --color -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k"`\\t"$k";done|sort'
 # Git push commands
 alias gp="git push"
 alias gpnh="git push --tags nathan HEAD"
