@@ -191,3 +191,11 @@ function cheat() {
 
 compctl -K _cheat_completion cheat
 
+# For autocompleting my tailscale hosts
+function _ts() {
+    local completions
+    completions="$(ts $1)"
+    reply=( "${(ps:\n:)completions}" )
+}
+
+compctl -K _ts ts

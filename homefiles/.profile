@@ -180,6 +180,10 @@ function sizeof () {
     du -k ${=IGNORE} $1 | tail -n 1 | cut -f 1 | awk '{s=$1*1024} END {printf "%d\n", s}'
 }
 
+function ts () {
+    /Applications/Tailscale.app/Contents/MacOS/Tailscale status --json | jq -r ".Peer | .[] | select(.Online == true) | select(.HostName | startswith(\"$1\")) | .HostName" | sort
+}
+
 # Git add commands
 alias ga='git add'
 alias gap='git add -p'
