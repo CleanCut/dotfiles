@@ -218,6 +218,9 @@ alias gst='git status'
 # Git switch commands
 alias gs='git switch'
 alias gsc='git switch --create'
+function gscc() {
+    git switch --create "cleancut/$1"
+}
 # Git submodule commands
 alias gsup="git submodule update --init --recursive"
 # Git branch commands
@@ -228,6 +231,9 @@ alias gbam='for k in `git branch -a --merged | grep -v remotes/origin/HEAD | sed
 alias gp="git push"
 alias gpnh="git push --tags nathan HEAD"
 alias gpoh="git push --tags origin HEAD"
+# Git pull commands
+alias gpl="git pull"
+alias gplp="git pull --prune"
 
 alias gocover="go test ./... -coverprofile cover.out && go tool cover -html=cover.out"
 alias ij='open -a "IntelliJ IDEA"'
