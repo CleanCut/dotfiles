@@ -41,9 +41,24 @@ for dir in bin gitcompletion tmux vim; do
     if [[ -d "$dir" ]]; then
         rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
     fi
-    msg "Sym-linking ~/.$dir/"
+    msg "Symlinking ~/.$dir/"
     ln -s "$(pwd)/${dir}" "$HOME/.$dir" || error "Failed to sym-link ~/.$dir/"
 
+done
+
+# Symlink agents into ~/.copilot
+if [[ ! -d "$HOME/.copilot/agents" ]]; then
+    mkdir -p "$HOME/.copilot/agents"
+fi
+for agent in copilot/agents/*; do
+    agent_name=$(basename "$agent")
+    dest="$HOME/.copilot/agents/$agent_name"
+    # Remove any exsting symlink
+    if [[ -L "$dest" ]]; then
+        rm -f "$dest" || error "failed removing the existing $dest symlink"
+    fi
+    msg "Symlinking $dest"
+    ln -s "$(pwd)/$agent" "$dest" || error "Failed symlinking $dest"
 done
 
 function install_rust {
