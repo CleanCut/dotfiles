@@ -57,7 +57,7 @@ for agent in copilot/agents/*; do
     if [[ -L "$dest" ]]; then
         rm -f "$dest" || error "failed removing the existing $dest symlink"
     fi
-    msg "Symlinking $dest"
+    msg "Symlinking ~/.copilot/agents/$agent_name"
     ln -s "$(pwd)/$agent" "$dest" || error "Failed symlinking $dest"
 done
 
