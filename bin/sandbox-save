@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker sandbox save $1 nathan-sandbox:v1
