@@ -34,3 +34,5 @@ version = 2
 ff = only
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
