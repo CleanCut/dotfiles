@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker sandbox run --load-local-template -t nathan-sandbox:v1 copilot-$1
+docker sandbox run copilot-$1
