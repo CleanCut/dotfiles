@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker sandbox exec -it copilot-$1 /bin/bash
