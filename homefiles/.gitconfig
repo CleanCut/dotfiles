@@ -8,7 +8,7 @@ show = diff-highlight | less
 diff = diff-highlight | less
 [user]
 name = Nathan Stocks
-email = cleancut@github.com
+email = nathan.s@oxen.ai
 [mergetool "Kaleidoscope"]
 cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 trustexitcode = true
