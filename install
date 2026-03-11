@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+function info() {
+    echo "ℹ $1"
+}
+
 function msg() {
     echo "🚀 $1"
 }
@@ -35,15 +39,21 @@ for f in homefiles/.*; do
 
 done
 
-# Symlink directories into ~/
-for dir in bin gitcompletion tmux vim; do
+# Symlink directories into dot-directories ".$DIR" ~/
+for dir in bin gitcompletion tmux vim config/zed; do
     # Remove any exsting symlink
     if [[ -d "$dir" ]]; then
         rm -f "$HOME/.$dir" || error "$HOME/.$dir isn't a symlink like I expected, so I'm not replacing it."
     fi
     msg "Symlinking ~/.$dir/"
     ln -s "$(pwd)/${dir}" "$HOME/.$dir" || error "Failed to sym-link ~/.$dir/"
+done
 
+# Hard link all fonts into ~/Library/Fonts
+for f in font/*; do
+    file=$(basename "$f")
+    msg "Hard-linking font file into ~/Library/Fonts: $file"
+    ln -f "$(pwd)/font/$file" "$HOME/Library/Fonts/$file" || error "Failed hard-linking $f"
 done
 
 # Symlink agents into ~/.copilot
@@ -71,8 +81,13 @@ function install_rust {
     rm rustup-init.sh
 }
 
+source ~/.profile
+hash -r
+
 # Is rust installed?
-if ! rustc --version >/dev/null; then
+if rustc --version >/dev/null; then
+    msg "Rust is already installed"
+else
     # BP Dev environment, automatically install rust
     if [[ $USER == "build" && $HOME == "/workspace" ]]; then
         install_rust
@@ -81,13 +96,16 @@ if ! rustc --version >/dev/null; then
     else
         warn "Rust is not installed. 😕"
     fi
+    hash -r
 fi
+
+msg "Installing Rust cli tools"
+cargo install -q ripgrep
+cargo install -q fd-find
 
 msg "Resetting all vim plugins"
 git submodule --quiet deinit -f --all 2>/dev/null
 git submodule --quiet update --init --recursive || error "Failed to update vim plugins"
-
-
 
 if [[ $OS == "macos" ]]; then
     if ! type brew &>/dev/null ; then
@@ -99,7 +117,10 @@ if [[ $OS == "macos" ]]; then
         hash -r
     fi
     msg "Installing stuff we want from Homebrew..."
-    brew bundle --quiet || error "Failed to install the stuff we want from Homebrew."
+    if ! brew bundle --quiet ; then
+        error "Failed to install the stuff we want from Homebrew."
+        exit 1
+    fi
 else
     if [[ $OS == "debian" || $OS == "ubuntu" ]]; then
     msg "Adding a .bashrc, because that's what $OS-based distros want."
@@ -109,9 +130,12 @@ else
     fi
 fi
 
+# Prompt about linking iTerm
+info "iTerm2's settings are in ~/.dotfiles/iterm2"
+
 # Prompt about installing the private dotfiles next
 if [[ -d "$HOME/.private" ]]; then
-    msg "Success! Consider running ~/.private/install next."
-else
-    msg "Success!"
+    info "Consider running ~/.private/install next."
 fi
+
+msg "Success!"
