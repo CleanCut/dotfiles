@@ -1,27 +1,18 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
   {
-    "context": "Workspace",
+    "context": "Terminal",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift-enter": ["terminal::SendText", "\u001b\r"],
     },
   },
   {
-    "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::NormalBefore"
+      "ctrl-cmd-t": "terminal_panel::ToggleFocus",
     },
   },
   {
-    "context": "Workspace",
     "bindings": {
-      "ctrl-cmd-t": "terminal_panel::Toggle"
-    }
-  }
+      "ctrl-cmd-shift-t": "terminal_panel::Toggle",
+    },
+  },
 ]
