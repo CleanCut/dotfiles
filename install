@@ -133,6 +133,11 @@ fi
 # Prompt about linking iTerm
 info "iTerm2's settings are in ~/.dotfiles/iterm2"
 
+# Disable press-and-hold for development applications that have it enabled by default
+for app in dev.zed.Zed ; do
+    defaults write "$app" ApplePressAndHoldEnabled -bool false
+done
+
 # Prompt about installing the private dotfiles next
 if [[ -d "$HOME/.private" ]]; then
     info "Consider running ~/.private/install next."
