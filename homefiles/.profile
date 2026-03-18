@@ -315,3 +315,12 @@ fi
 if [ -f "/opt/homebrew/bin/brew" ] ; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Elixir environment stuff
+if which mise &>/dev/null ; then
+    if [[ -n "$BASH_VERSION" ]]; then
+        eval "$(mise activate bash)"
+    else
+        eval "$(mise activate zsh)"
+    fi
+fi
