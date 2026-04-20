@@ -25,6 +25,26 @@
     "max_scroll_history_lines": 10000,
     "working_directory": "current_project_directory",
   },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "allTargets": true,
+          "features": "all",
+        },
+        "check": {
+          "workspace": true,
+          "features": "all",
+        },
+        // "check": {
+        //   "workspace": false,
+        // },
+        // "cargo": {
+        //   "features": "all",
+        // },
+      },
+    },
+  },
   "global_lsp_settings": {
     "semantic_token_rules": [
       {
