@@ -1,1 +1,1 @@
-export PATH="$HOME/.sbin:$HOME/.bin:$HOME/Dropbox/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:/Library/PostgreSQL/18/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/MacVim.app/Contents/bin:$HOME/plan/bin:$PATH"
+export PATH="$HOME/.sbin:$HOME/.bin:$HOME/Dropbox/bin:$HOME/.cargo/bin:$HOME/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/local/opt/python/libexec/bin:/Library/PostgreSQL/18/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/MacVim.app/Contents/bin:$HOME/ox/plan/ox-cmd:$PATH"

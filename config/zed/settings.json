@@ -7,7 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "extend_comment_on_newline": false,
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "extend_comment_on_newline": true,
   "agent_servers": {
     "claude-acp": {
       "type": "registry",
@@ -645,6 +658,7 @@
   },
   "base_keymap": "VSCode",
   "agent": {
+    "dock": "left",
     "enabled": true,
     "button": true,
     "favorite_models": [],
