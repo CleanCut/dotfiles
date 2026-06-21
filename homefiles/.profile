@@ -212,6 +212,7 @@ alias groot='cd $(git rev-parse --show-toplevel)'
 alias gr='git rebase'
 alias grc='git rebase --continue'
 alias gra='git rebase --abort'
+alias grim='git rebase --interactive origin/main'
 alias grs='git rebase --skip'
 # Git status
 alias gst='git status'
