@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# afarm — spin up a fresh Asteroid Farm working copy.
+#
+# Clones git@github.com:CleanCut/asteroid_farm into ~/agile/<name>,
+# opens it in Zed, then runs `cargo build`.
+#
+# Usage:
+#   afarm <name>      # clone into ~/agile/<name>
+#
+set -euo pipefail
+
+AGILE_DIR="$HOME/agile"
+REPO="git@github.com:CleanCut/asteroid_farm"
+
+name="${1:-}"
+if [ -z "$name" ]; then
+  echo "usage: afarm <name>" >&2
+  echo "  clones asteroid_farm into ~/agile/<name>, opens Zed, runs cargo build" >&2
+  exit 1
+fi
+
+mkdir -p "$AGILE_DIR"
+
+# Don't clobber an existing checkout — append -2, -3, … until the name is free.
+target="$name"
+i=2
+while [ -e "$AGILE_DIR/$target" ]; do
+  target="${name}-${i}"
+  i=$((i + 1))
+done
+if [ "$target" != "$name" ]; then
+  echo "afarm: ~/agile/$name exists, using ~/agile/$target instead."
+fi
+
+git -C "$AGILE_DIR" clone "$REPO" "$target"
+
+zed "$AGILE_DIR/$target"
+
+cargo build --manifest-path "$AGILE_DIR/$target/Cargo.toml"
+
+echo "afarm: ready at $AGILE_DIR/$target"

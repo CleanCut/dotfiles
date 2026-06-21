@@ -7,6 +7,25 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "dark.local",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/Users/nathan/.dotfiles"
+          ]
+        },
+        {
+          "paths": [
+            "/Users/nathan/.private"
+          ]
+        }
+      ],
+      "nickname": "dark laptop"
+    }
+  ],
   "cli_default_open_behavior": "new_window",
   "project_panel": {
     "dock": "left",
