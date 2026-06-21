@@ -1,2 +1,4 @@
 Brewfile.lock.json
 .claude
+bin/oxen*
+config/zed/prompts/prompts-library-db.0.mdb/lock.mdb
