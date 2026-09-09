@@ -69,6 +69,7 @@
     "dark": "Zed (Default)",
   },
   "terminal": {
+    "bell": "system",
     "starts_open": true,
     "font_size": 14.0,
     "max_scroll_history_lines": 10000,
