@@ -128,12 +128,15 @@ GIT_PS1_SHOWDIRTYSTATE="1"
 GIT_PS1_SHOWSTASHSTATE="1"
 # Show untracked files (%)
 GIT_PS1_SHOWUNTRACKEDFILES="1"
-# Show number of commits different from upstream (verbose), relative to the git upstream.
+# Show whether HEAD is ahead (>), behind (<), diverged (<>), or in sync (=) with its upstream.
 GIT_PS1_SHOWUPSTREAM="auto"
+# Show unresolved merge conflicts (|CONFLICT)
+GIT_PS1_SHOWCONFLICTSTATE="yes"
 # On a detached head, show the number of commits of of the nearest NEWER branch or tag.
 GIT_PS1_DESCRIBE_STYLE="branch"
 
-export GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES GIT_PS1_SHOWUPSTREAM GIT_PS1_DESCRIBE_STYLE
+export GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES GIT_PS1_SHOWUPSTREAM
+export GIT_PS1_SHOWCONFLICTSTATE GIT_PS1_DESCRIBE_STYLE
 
 alias clean='clear && find . -name __pycache__ -exec rm -rf \{\} \;'
 alias dc='docker-compose'
