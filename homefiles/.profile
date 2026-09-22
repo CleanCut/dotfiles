@@ -198,10 +198,10 @@ alias gcm='git commit -m'
 alias gcam='git commit -am'
 # Git diff commands
 alias gd='git diff'
-alias gds='git diff --stats'
+alias gds='git diff --stat'
 alias gdw='git diff --word-diff=color'
 alias gdc='git diff --cached'
-alias gdcs='git diff --cached --stats'
+alias gdcs='git diff --cached --stat'
 alias gdcw='git diff --cached --word-diff=color'
 # Git log commands (a = all, f = files, s = short)
 alias gl='git log --graph --decorate'
