@@ -80,11 +80,9 @@
       "initialization_options": {
         "cargo": {
           "allTargets": true,
-          "features": "all",
         },
         "check": {
           "workspace": true,
-          "features": "all",
         },
         // "check": {
         //   "workspace": false,
