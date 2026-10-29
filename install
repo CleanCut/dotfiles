@@ -102,6 +102,7 @@ fi
 msg "Installing Rust cli tools"
 cargo install -q ripgrep
 cargo install -q fd-find
+cargo install -q git-delta
 
 msg "Resetting all vim plugins"
 git submodule --quiet deinit -f --all 2>/dev/null
