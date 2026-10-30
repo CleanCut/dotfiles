@@ -39,7 +39,7 @@ Because these are symlinks, editing `~/.gitconfig` and editing `homefiles/.gitco
 
 ## Committing
 
-Nathan commits here himself unless he says to, and often has his own uncommitted edits (to `homefiles/.profile`, say), so commit only the paths you changed (`git commit -- <paths>`). His go-ahead to commit covers the push, as the global config describes.
+Commit and push your own changes once they are ready, without asking, through `/commit-and-push`'s config-repo path, as the global config lays out. Nathan often has his own uncommitted edits here (to `homefiles/.profile`, say), and that path commits only your hunks.
 
 ## This file
 
