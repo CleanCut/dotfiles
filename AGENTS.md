@@ -22,7 +22,7 @@ Because these are symlinks, editing `~/.gitconfig` and editing `homefiles/.gitco
 
 - **A shell alias, function, or environment variable:** `homefiles/.profile`. zsh loads it through `homefiles/.zshrc` (`source ~/.profile`), and bash reads it directly. Keep zsh-only setup (completion, prompt, key bindings) in `.zshrc`.
 - **A secret or machine-specific variable:** `~/.private/homefiles/.profile-private.sh`, which the end of `.profile` sources when it exists. Never here.
-- **`PATH`:** `homefiles/.path`, one `export PATH=...` line that `.profile` sources.
+- **`PATH`:** `homefiles/.path`, one `export PATH=...` line that `.profile` sources. A login zsh that is not interactive (`zsh -l -c`, how coord and other tools run commands) reads no `.zshrc`, so `homefiles/.zlogin` sources `.path` for it.
 - **Git settings:** `homefiles/.gitconfig` (the pager is delta, configured under `[delta]`). Global ignores go in `homefiles/.gitignore-global`.
 - **A script to run from anywhere:** `bin/`, on `PATH` as `~/.bin`. A script that carries anything private goes in `~/.private/sbin` (`~/.sbin`). `bin/oxen*` is gitignored, for local builds of the `oxen` binaries.
 - **A CLI tool:** a Rust crate goes in `install`'s "Installing Rust cli tools" list as `cargo install -q <crate>`, and anything else in `Brewfile`. Prefer `cargo install` for a tool written in Rust.
@@ -34,7 +34,7 @@ Because these are symlinks, editing `~/.gitconfig` and editing `homefiles/.gitco
 ## Checking a change
 
 - Run `bash -n install` after editing `install`, and `shellcheck` (installed in `~/.local/bin`) on any shell file you change. `.profile` carries `shellcheck` directives, so keep it clean under it.
-- After editing `.profile`, `.path`, or `.zshrc`, check it in a fresh shell (`zsh -lic 'echo ok'`) rather than sourcing it into one that is already set up.
+- After editing `.profile`, `.path`, `.zshrc`, or `.zlogin`, check it in a fresh shell (`zsh -lic 'echo ok'`) rather than sourcing it into one that is already set up, and after a `PATH` change, in a non-interactive login shell too (`zsh -lc 'echo $PATH'`).
 - After editing `.gitconfig`, `git config --get <key>` confirms git reads the value, and `git config --get-regexp '^pager\.'` shows any per-command pager that would override `core.pager`.
 
 ## Committing
