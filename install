@@ -131,6 +131,12 @@ else
     fi
 fi
 
+# gh clones and forks over the protocol its config names, and every remote should be SSH
+if type gh &>/dev/null ; then
+    msg "Setting gh's git protocol to SSH"
+    gh config set git_protocol ssh || error "Failed to set gh's git protocol to SSH"
+fi
+
 # Prompt about linking iTerm
 info "iTerm2's settings are in ~/.dotfiles/iterm2"
 
