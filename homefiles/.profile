@@ -138,6 +138,8 @@ GIT_PS1_DESCRIBE_STYLE="branch"
 export GIT_PS1_SHOWDIRTYSTATE GIT_PS1_SHOWSTASHSTATE GIT_PS1_SHOWUNTRACKEDFILES GIT_PS1_SHOWUPSTREAM
 export GIT_PS1_SHOWCONFLICTSTATE GIT_PS1_DESCRIBE_STYLE
 
+alias cl='claude'
+alias clc='claude -c'
 alias clean='clear && find . -name __pycache__ -exec rm -rf \{\} \;'
 alias dc='docker-compose'
 alias dcb='docker-compose build'
