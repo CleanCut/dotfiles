@@ -103,9 +103,6 @@ msg "Installing Rust cli tools"
 cargo install -q ripgrep
 cargo install -q fd-find
 cargo install -q git-delta
-# Tauri 2's CLI, pinned since crates.io's newest tauri-cli is a 3.0 alpha
-cargo install -q --locked tauri-cli --version '^2.0.0'
-cargo install -q --locked create-tauri-app
 
 msg "Resetting all vim plugins"
 git submodule --quiet deinit -f --all 2>/dev/null
