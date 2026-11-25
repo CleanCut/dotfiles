@@ -14,6 +14,8 @@ brew "teamookla/speedtest/speedtest"
 brew "tmux"
 brew "tree"
 brew "wget"
+# tshark and capinfos, for reading packet captures (capturing still needs sudo tcpdump).
+brew "wireshark"
 brew "xxhash"
 cask "iterm2"
 cask "menumeters"
